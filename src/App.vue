@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, provide } from 'vue';
 import UserData from './components/UserData.vue';
 
 export default {
@@ -34,6 +34,8 @@ export default {
     //   age: 25,
     // });
 
+    provide('userAge', uAge);
+
     const uName = computed(function () {
       return firstName.value + ' ' + lastName.value;
     });
@@ -42,7 +44,7 @@ export default {
       console.log('old age: ', oldValues[0]);
       console.log('new age: ', newValues[0]);
       console.log('old name: ', oldValues[1]);
-      console.log('new name: ', newValues[0]);
+      console.log('new name: ', newValues[1]);
     });
 
     function setNewAge() {
@@ -76,6 +78,9 @@ export default {
   //     userName: 'Maximilian',
   //   };
   // },
+  // provide() {
+  //   return { age: this.age }
+  // }
 };
 </script>
 
